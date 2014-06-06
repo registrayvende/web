@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<title>Remates Montepio</title>
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+<link rel="stylesheet"
+	href="./css/page.css">
+	<link rel="stylesheet"
+	href="./css/flexigrid.pack.css>
+
+</head>
+<body>
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#navbar-main">
+					<span class="sr-only"></span> <span
+						class="icon-bar"></span> 
+						<span class="icon-bar"></span> 
+						<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Remates Montepio</a>
+			</div>
+			<div id="navbar-main" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li ><a href="index.html">Inicio</a></li>
+					<li><a href="#">Tienda</a></li>
+					<li class="active"><a href="#">Empleados</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	
+	<div class="container">
+		<div class="row">
+			<h2>
+			Ingrese su archivo o arrastrelo a la parte inferior
+			</h2>
+		</div>
+		<div class="row">
+			<form class="form-horizontal" role="form">
+				<label class="control-label col-md-4" for="archivo">Archivo:</label>
+				
+				<div class="col-md-6">
+					<input id="archivo" type="file" name="archivo" />
+				</div>
+			</form>
+		</div>
+		<div class="row">
+			<div class="grid"></div>
+		</div>
+		
+	</div>
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	
+	<script
+		src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="./js/flexigrid.pack.js"></script>
+	<script>
+    $(".grid").flexigrid({
+        dataType : 'json',
+        colModel : [ {
+            display : 'Producto',
+            name : 'producto',
+            width : 90,
+            sortable : true,
+            align : 'left'
+            }, {
+                display : 'Descripcion',
+                name : 'descripcion',
+                width : 120,
+                sortable : true,
+                align : 'left'
+            }, {
+                display : 'Precio Estimado',
+                name : 'precio_estimado',
+                width : 120,
+                sortable : true,
+                align : 'left'
+            }],
+        buttons : [ {
+            name : 'Agregar',
+            bclass : 'add',
+            onpress : Example4
+            }
+            ,
+            {
+                name : 'Editar',
+                bclass : 'edit',
+                onpress : Example4
+            }
+            ,
+            {
+                name : 'Borrar',
+                bclass : 'delete',
+                onpress : Example4
+            }
+            ,
+            {
+                separator : true
+            } 
+        ],
+        searchitems : [ {
+            display : 'Producto',
+            name : 'producto'
+            }, {
+                display : 'Descripcion',
+                name : 'descripio',
+                isdefault : true
+        } ],
+        sortname : "iso",
+        sortorder : "asc",
+        usepager : true,
+        title : 'Productos',
+        useRp : true,
+        rp : 15,
+        showTableToggleBtn : true,
+        width : 750,
+        height : 200
+    });
+
+    function Example4(com, grid) {
+        if (com == 'Delete') {
+         
+        }
+        else if (com == 'Edit') {
+        
+        }
+        else if (com == 'Add') {
+        }
+    };
+	</script>
+</body>
+</html>
