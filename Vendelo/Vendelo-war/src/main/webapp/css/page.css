@@ -2,3 +2,15 @@
 .pasos{
 	text-align: center;
 }
+.reporte .glyphicon-ok-sign {
+	color:lime;
+}
+.reporte .glyphicon-ok-sign {
+	color:lime;
+}
+.reporte .glyphicon-question-sign{
+	color:yellow;
+}
+.reporte .glyphicon-exclamation-sign{
+	color:red;
+}

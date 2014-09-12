@@ -5,7 +5,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-<title>Remates Montepio</title>
+<title>Remates Montepio - Dashboard</title>
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -28,7 +28,8 @@
 				<ul class="nav navbar-nav">
 					<li><a href="index.html">Inicio</a></li>
 					<li class="active"><a href="dashboard.html">Estadisticas</a></li>
-					<li><a href="cargar.html">Empleados</a></li>
+					<li><a href="cargar.html">Consola</a></li>
+					<li><a href="reportes.html">Reportes</a></li>
 				</ul>
 			</div>
 		</div>
@@ -44,35 +45,27 @@
 		<div class="row">
 			<div class="col-md-6">
 				<div class="panel panel-default " id="productos">
-					<div class="panel-heading">Ventas vs Inventario</div>
-					<div class="panel-body">
-						<div id="chart1"></div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="panel panel-default " id="productos">
-					<div class="panel-heading">Ventas / Tiempo</div>
+					<div class="panel-heading">Ventas del dia</div>
 					<div class="panel-body">
 						<div id="chart2"></div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row">
 			<div class="col-md-6">
 				<div class="panel panel-default " id="productos">
-					<div class="panel-heading">Inventario Total</div>
+					<div class="panel-heading">Ventas por canal</div>
 					<div class="panel-body">
-						<div id="chart3"></div>
+						<div id="chart1"></div>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6">
+		</div>
+		<div class="row">
+			<div class="col-md-12">
 				<div class="panel panel-default " id="productos">
-					<div class="panel-heading">Ventas Hoy</div>
+					<div class="panel-heading">Ventas por familia</div>
 					<div class="panel-body">
-						<div id="chart4"></div>
+						<div id="chart3"></div>
 					</div>
 				</div>
 			</div>
@@ -86,25 +79,27 @@
 
 	<script>
 		google.load("visualization", "1", {
-			packages : [ "corechart", "gauge" ]
+			packages : [ "corechart" ]
 		});
 		google.setOnLoadCallback(drawChart);
 
 		function drawChart() {
 			 data = google.visualization.arrayToDataTable([
 					[ 'Canal', "Cantidad" ], [ 'MercadoLibre', 20 ],
-					[ 'SegundaMano', 30 ], [ 'OLX', 40 ], [ 'Linio', 20 ],
-					[ 'Inventario restante', 100 ], ]);
+					[ 'SegundaMano', 30 ], [ 'OLX', 40 ], [ 'Linio', 10 ]]);
 
 			 data2 = google.visualization.arrayToDataTable([
 					[ 'Tipo', "Inventario", "Ventas" ], [ '8:00am', 100, 20 ],
 					[ '8:01am', 99, 21 ], [ '8:02pm', 94, 26 ],
 					[ '8:03pm', 90, 30 ], [ "8:04pm", 89, 31 ], ]);
 			 data3 = google.visualization.arrayToDataTable([
-					[ 'Inventario', 'Cantidad' ], [ 'Inventario', 100 ] ]);
-			 data4 = google.visualization.arrayToDataTable([
-			                    [ 'Ventas', 'Cantidad' ], [ 'Hoy', 20 ] ]);
-			                               			
+					[ 'Familia', 'Cantidad' ], 
+					[ 'TV', 25 ],
+					[ 'Celulares', 15 ],
+					[ 'Laptops', 20 ],
+					[ 'Linea blanca', 10 ],
+					]);
+			                           			
 			var options = {
 				title : 'Ventas / Inventario',
 				is3D : true,
@@ -119,44 +114,41 @@
 			chart2.draw(data2, {
 				title : "Ventas / Tiempo"
 			});
-			var chart3 = new google.visualization.Gauge(document
+			var chart3 = new google.visualization.BarChart(document
 					.getElementById('chart3'));
 			chart3.draw(data3, {
 				title : "Inventario"
-			});
-			var chart4 = new google.visualization.Gauge(document
-					.getElementById('chart4'));
-			chart4.draw(data4, {
-				title : "Ventas hoy"
 			});
 			var c=0;
 			setInterval(function(){
 				
 				data = google.visualization.arrayToDataTable([
 				                          					[ 'Canal', "Cantidad" ], [ 'MercadoLibre', 20 +c ],
-				                          					[ 'SegundaMano', 30 ], [ 'OLX', 40 ], [ 'Linio', 20 ],
-				                          					[ 'Inventario restante', 100-c ], ]);
+				                          					[ 'SegundaMano', 30-c ], [ 'OLX', 40 ], [ 'Linio', 20 ]
+				                          					 ]);
 
 				                          			 data2 = google.visualization.arrayToDataTable([
-				                          					[ 'Tipo', "Inventario", "Ventas" ], [ '8:00am', 100, 20 ],
-				                          					[ '8:01am', 99, 21 ], [ '8:02pm', 94, 26 ],
-				                          					[ '8:03pm', 90, 30 ], [ "ultimo", 89-c, 31+c ] ]);
+				                          					[ 'Tipo',  "Ventas" ], [ '8:00am',  20 ],
+				                          					[ '8:01am', 21 ], [ '8:02pm',  26 ],
+				                          					[ '8:03pm',  30 ], [ "ultimo",  31+c ] ]);
 				                          			 data3 = google.visualization.arrayToDataTable([
-				                          					[ 'Inventario', 'Cantidad' ], [ 'Inventario', 100 ] ]);
-				                          			 data4 = google.visualization.arrayToDataTable([
-				                          			                    [ 'Ventas', 'Cantidad' ], [ 'Hoy', 20 ] ]);
-			c++;
+				                          			                          					[ 'Familia', 'Cantidad' ], 
+				                          			                          					[ 'TV', 25+(c*1.2) ],
+				                          			                          					[ 'Celulares', 15+c ],
+				                          			                          					[ 'Laptops', 20+(c*.5) ],
+				                          			                          					[ 'Linea blanca', 10+(c*.8) ],
+				                          			                          					]);
+				                          			 c++;
 			chart1.draw(data, options);
 			chart2.draw(data2, {
 				title : "Ventas / Tiempo"
 			});
-			/*
+			
 			chart3.draw(data3, {
 				title : "Inventario"
 			});
-			chart4.draw(data4, {
-				title : "Ventas hoy"
-			});*/
+			
+		
 			},1000);
 
 		}

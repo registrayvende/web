@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<title>Remates Montepio - Consola</title>
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="./css/page.css">
+<link rel="stylesheet"
+	href="//cdn.datatables.net/1.10.0/css/jquery.dataTables.css	">
+</head>
+<body>
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#navbar-main">
+					<span class="sr-only"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Remates Montepio</a>
+			</div>
+			<div id="navbar-main" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="index.html">Inicio</a></li>
+					<li><a href="dashboard.html">Estadisticas</a></li>
+					<li><a href="cargar.html">Consola</a></li>
+					<li class="active"><a href="reportes.html">Reportes</a></li>
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="row ">
+			<div class="panel panel-default " id="productos">
+				<div class="panel-heading">Productos</div>
+				<div class="panel-body">
+					<table class="table table-condensed table-responsive col-md-12 reporte">
+						<thead>
+							<th>Producto</th>
+							<th>Descripción</th>
+							<th>Familia</th>
+							<th>Precio estimado</th>
+							<th>Estatus</th>
+							<th>Semaforo</th>
+						</thead>
+						<tbody>
+							<tr>
+								<td>TV Samsung 50</td>
+								<td>Hermosa TV Samsung de 50 pulgadas en perfecto estado...</td>
+								<td>TV</td>
+								<td>$10,000.00</td>
+								<td>En venta</td>
+								<td  data-order="0"><span data-toggle="tooltip" data-placement="right" title="Desde hace 30 dias" class="semaphore glyphicon glyphicon-ok-sign"></span>
+								</td>
+							</tr>
+							<tr>
+								<td>Samsung Galaxy S5</td>
+								<td>Galaxy S5 telcel como nuevo incluye todos sus
+									accesorios...</td>
+									<td>Celulares</td>
+								<td>$12,000.00</td>
+								<td>Vendido</td>
+								<td  data-order="0"><span data-toggle="tooltip" data-placement="right" title="Desde hace 30 dias" class="semaphore glyphicon glyphicon-ok-sign"></span>
+								</td>
+							</tr>
+							<tr>
+								<td>Laptop Asus</td>
+								<td>2.5 Ghz 4GB Ram 500 DD</td>
+								<td>Computo</td>
+								<td>$7,000.00</td>
+								<td>En venta</td>
+								<td  data-order="1"><span data-toggle="tooltip" data-placement="right" title="Desde hace 30 dias"
+									class="semaphore glyphicon glyphicon-question-sign"></span></td>
+							</tr>
+							<tr>
+								<td>Laptop Acer</td>
+								<td>1.5 Ghz 2GB Ram 200 DD</td>
+								<td>Computo</td>
+								<td>$7,000.00</td>
+								<td>En venta</td>
+								<td  data-order="2"><span   data-toggle="tooltip" data-placement="right" title="Desde hace 30 dias"
+									class=" semaphore glyphicon glyphicon-exclamation-sign"></span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="panel-footer nav ">
+					<button type="button" id="editar"
+						class="btn btn-default navbar-btn navbar-left">Editar</button>
+
+
+				</div>
+
+			</div>
+		</div>
+		<div id="correcto" style="display: none;" class="jumbotron">
+			<h1>Exito!</h1>
+			<p>Se han publicado correctamente 2 articulos</p>
+			<p>
+				<a id="ok" class="btn btn-primary btn-lg" role="button">Aceptar</a>
+			</p>
+		</div>
+	</div>
+	<div id="editarModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Producto</h4>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="row">
+							<label class="control-label col-md-4" for="pro">Producto:</label>
+							<div class="col-md-8">
+								<input id="pro" value="TV Samsung 50" class="form-control"
+									name="pro" />
+							</div>
+
+						</div>
+						<div class="row">
+							<br />
+						</div>
+						<div class="row">
+							<label class="control-label col-md-4" for="des">Descipción:</label>
+							<div class="col-md-8">
+								<textarea rows="3" id="des" class="form-control" name="des">Hermosa TV Samsung de 50 pulgadas en perfecto estado</textarea>
+							</div>
+						</div>
+						<div class="row">
+							<br />
+						</div>
+						<div class="row">
+							<label class="control-label col-md-4" for="pre">Precio:</label>
+							<div class="col-md-8">
+								<input id="pre" value="$10,000.00" class="form-control"
+									name="pre" />
+							</div>
+						</div>
+						<div class="row">
+							<br />
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<h4>Seleccione Tiendas</h4>
+								<div>
+									<button type="button" data-chk="0"
+										class="chkbox btn btn-primary btn-md">
+										<span class="glyphicon glyphicon glyphicon-check"></span>
+									</button>
+									<img src="./images/mercadoLibre.jpg" />
+								</div>
+								<div>
+									<button type="button" data-chk="0"
+										class="chkbox btn btn-primary btn-md">
+										<span class="glyphicon glyphicon glyphicon-check"></span>
+									</button>
+									<img src="./images/segundamano.png" />
+								</div>
+								<div>
+									<button type="button" data-chk="0"
+										class="chkbox btn btn-primary btn-md">
+										<span class="glyphicon glyphicon glyphicon-check"></span>
+									</button>
+									<img src="./images/olx.jpg" />
+								</div>
+								<div>
+									<button type="button" data-chk="0"
+										class="chkbox btn btn-primary btn-md">
+										<span class="glyphicon glyphicon glyphicon-check"></span>
+									</button>
+									<img src="./images/linio.jpg" />
+								</div>
+							</div>
+							<img class="img-responsive col-md-6" style="margin: 0 auto;"
+								src="./images/lista.png" />
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+	<script
+		src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="./js/jquery.dataTables.js"></script>
+	<script>
+		$(document).ready(function() {
+			
+			$("table").dataTable({
+	            "language": {
+	            	 search:"Buscar:",
+	            	 lengthMenu:    "Mostrando _MENU_  registros",
+	                 infoFiltered:   "(filtrados de _MAX_ registros en total)",
+	                 infoEmpty:      "Mostrando 0 registros",
+	            	 info:           "Mostrando _START_ a	 _END_ de _TOTAL_ registros",
+	                 zeroRecords:    "No hay registros",
+	            	 paginate: {
+	                     first:      "Primero",
+	                     previous:   "Último",
+	                     next:       "Siguiente",
+	                     last:       "Anterior"
+	                 },
+	            }
+	        } );
+			$("span.semaphore").tooltip();
+			$("#editar").click(function() {
+				$("#editarModal").modal();
+			});
+
+			$(".chkApr").click(function() {
+				if ($(this).attr("data-chk") == "0") {
+					$(this).removeClass("glyphicon-ok");
+					$(this).addClass("glyphicon-remove");
+					$(this).attr("data-chk", "1")
+				} else {
+					$(this).removeClass("glyphicon-remove");
+					$(this).addClass("glyphicon-ok");
+					$(this).attr("data-chk", "0")
+				}
+			});
+			$(".chkbox").click(function() {
+				if ($(this).attr("data-chk") == "0") {
+					$(this).removeClass("btn-primary");
+					$(this).find("span").removeClass("glyphicon-check");
+					$(this).find("span").addClass("glyphicon-unchecked");
+					$(this).addClass("btn-default");
+					$(this).attr("data-chk", "1")
+				} else {
+					$(this).addClass("btn-primary");
+					$(this).find("span").removeClass("glyphicon-unchecked");
+					$(this).find("span").addClass("glyphicon-check");
+					$(this).removeClass("btn-default");
+					$(this).attr("data-chk", "0")
+				}
+
+			});
+
+		});
+	</script>
+</body>
+</html>

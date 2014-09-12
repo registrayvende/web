@@ -30,6 +30,7 @@
         <artifactId>appengine-maven-plugin</artifactId>
         <version>${appengine.target.version}</version>
         <configuration>
+            <appid>registrayvende</appid>
                 <port>8008</port>
             </configuration>
       </plugin>
